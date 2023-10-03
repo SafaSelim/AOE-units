@@ -11,6 +11,6 @@ import { UnitListComponent } from './unit-list.component';
   imports: [
     CommonModule
   ],
-  export: [UnitListComponent]
+  exports: [UnitListComponent]
 })
 export class UnitListModule { }
