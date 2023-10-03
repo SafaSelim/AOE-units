@@ -1,1 +1,16 @@
-<p>header works!</p>
+<header class="header">
+    <div class="header-home">
+      <a  [routerLink]="['/home']" class="header-home__link">
+        <img class="header-home__link__image" width="40" height="40" src="assets/icons/home.svg">
+        <strong>Home</strong>
+      </a>
+    </div>
+    <div class="header-units">
+        <a  [routerLink]="['/units']" class="header-units__link">
+          <img class="header-units__link__image" width="40" height="40" src="assets/icons/units.svg">
+          <strong>Units</strong>
+        </a>
+      </div>
+  </header>
+  
+  <h1 class="page-title">{{pageTitle}}</h1>
