@@ -1,4 +1,6 @@
-export const units = [
+import { Unit } from "../models/units.model";
+
+export const units: Unit[] = [
       {
         "id": 1,
         "name": "Archer",

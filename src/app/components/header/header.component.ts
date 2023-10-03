@@ -12,10 +12,18 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   routerSubscription = new Subscription;
 
+  hornAudio = new Audio();
+  bornAudio = new Audio();
+
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-  ) { }
+  ) {
+    this.bornAudio.src = "../../assets/audio/aoe-born.mp3"
+    this.bornAudio.load();
+    this.hornAudio.src = "../../assets/audio/aoe-horn.mp3"
+    this.hornAudio.load();
+   }
 
   ngOnInit(): void {
     this.routerSubscription = this.router.events
@@ -31,6 +39,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
         mergeMap((route) => route.data)
       )
       .subscribe((data) => {
+        // if(data['title'] === "Home") {
+        //   this.bornAudio.play();
+        // } else if (data['title'] === "Units") {
+        //   this.hornAudio.play();
+        // }
+
         this.pageTitle = data['title'] || 'Default Page Title';
       });
   }

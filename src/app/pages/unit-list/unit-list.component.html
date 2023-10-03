@@ -1,1 +1,20 @@
-<p>unit-list works!</p>
+<div class="unit-list-container">
+    <table class="unit-table">
+        <thead  class="unit-table__header">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Age</th>
+                <th scope="col">Cost</th>
+            </tr>
+        </thead>
+        <tbody class="unit-table__content">
+            <tr *ngFor="let unit of aoeUnits">
+                <td data-label="ID">{{unit.id}}</td>
+                <td data-label="Name">{{unit.name}}</td>
+                <td data-label="Age">{{unit.age}}</td>
+                <td data-label="Cost">{{ parseUnitCost(unit.cost) }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
