@@ -1,1 +1,13 @@
-<p>filter-ages works!</p>
+<div class="age-filter-section">
+    <fieldset>
+        <legend>
+            <img src="assets/icons/funnel.svg" width="32" height="32" alt="Filter Ages"> 
+            <span>Ages</span>
+        </legend>
+        <div class="chip-group" role="radiogroup">
+            <div class="chip chip-checkbox" [class.selected]="selectedAge === unitAge" *ngFor="let unitAge of unitAges; index as i" (click)="filterByAge(unitAge)">
+            <span id="category-{$i}">{{ unitAge }}</span>
+            </div>
+        </div>
+    </fieldset>
+</div>

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { UnitListComponent } from './unit-list.component';
 import { UnitListRoutingModule } from './unit-list-routing.module';
 import { UnitDetailsComponent } from './unit-details/unit-details.component';
+import { ComponentsModule } from 'src/app/components/components.module';
 
 
 
@@ -14,6 +15,7 @@ import { UnitDetailsComponent } from './unit-details/unit-details.component';
   imports: [
     CommonModule,
     UnitListRoutingModule,
+    ComponentsModule,
   ],
   exports: [
     UnitListComponent,

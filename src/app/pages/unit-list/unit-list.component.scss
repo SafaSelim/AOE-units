@@ -1,5 +1,14 @@
 .unit-list-container {
 
+    .filter-section {
+        width: auto;
+        margin-bottom: 25px;
+
+        .age-filter {
+            margin-bottom: 15px;
+        }
+    }
+
     .unit-table {
         border: 1px solid #ccc;
         border-collapse: collapse;
@@ -22,6 +31,9 @@
           }
 
         &__header {
+            position: sticky;
+            top: 78px;
+
             tr{
                 background-color: #545454;
                 color: #fff;

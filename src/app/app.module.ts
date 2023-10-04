@@ -3,22 +3,20 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FilterAgesComponent } from './components/filter-ages/filter-ages.component';
-import { FilterCostsComponent } from './components/filter-costs/filter-costs.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
-import { HeaderComponent } from './components/header/header.component';
+import { HeaderComponent } from './header/header.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FilterAgesComponent,
-    FilterCostsComponent,
     HomepageComponent,
     HeaderComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

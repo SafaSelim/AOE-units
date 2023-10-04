@@ -1,0 +1,84 @@
+.costs-filter-section {
+    width: fit-content;
+    
+    fieldset {
+        box-shadow: 0 1px 1px rgba(0,0,0,0.12);
+        border-radius: 25px;  
+        
+        legend {
+            display: flex;
+            align-items: center;
+
+            span {
+                font-size: 16px;
+                font-weight: 700;
+                font-family: cursive;
+                padding: 5px;
+                
+            }
+        }
+    }
+   
+    .chip-group{
+        display:flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+
+        .range-input-label {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+      }
+      .chip.chip-checkbox > .chip-add-icon::after {
+        content:"add"
+      }
+      .chip.chip-checkbox.active > .chip-add-icon::after {
+        content:"done"
+      }
+      .chip > * {
+        margin-right:2px;
+        margin-left:2px;
+        color: #757373;
+      }
+      .chip.chip-checkbox,
+      .chip.chip-toggle,
+      .chip.clickable{
+        cursor: pointer;
+      }
+      .chip.active {
+        background-color: #d3d2d2;
+        border-color:#c3c2c2;
+        box-shadow: 0 1px 1px rgba(0,0,0,0.12)
+      }
+
+      .selected {
+        background-color: #d3d2d2 !important;  
+      }
+
+      .chip button{
+        border:none;
+        margin-top:0;
+        margin-bottom:0;
+        padding:0;
+        background:none;
+        display:inline-flex;
+      }
+      .chip {
+        transition: all 0.3s ease-in-out;
+        background-color: #fff;
+        border-radius: 30px;
+        border: 1px solid #d3d2d2;
+        display: inline-flex;
+        align-items:center;
+        padding: 4px 6px 4px 6px;
+        margin-right:6px;
+        margin-bottom:6px;
+      }
+      .chip i.material-icons {
+        font-size: 18px;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+}

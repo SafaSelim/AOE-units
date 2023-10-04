@@ -1,1 +1,21 @@
-<p>filter-costs works!</p>
+<div class="costs-filter-section">
+    <fieldset>
+        <legend>
+            <img src="assets/icons/funnel.svg" width="32" height="32" alt="Filter Ages"> 
+            <span>Costs</span>
+        </legend>
+        <div class="chip-group" role="radiogroup">
+            <div class="chip chip-checkbox" [class.selected]="selectedCosts.indexOf(unitCost) !== -1" *ngFor="let unitCost of unitCosts">
+                <div class="range-input-label" (click)="toggleFilters(unitCost)">
+                    <img [src]="'assets/icons/'+ unitCost + '.svg'" width="24" height="24" [alt]="unitCost"> 
+                    <span id="category-{$i}">{{ unitCost }}</span>
+                </div>
+                <div class="range-input">
+                    <input type="range" [id]="'unit_range_' + unitCost" min="0" max="200"
+                        (change)="onRangeChange($event, unitCost)"
+                        [disabled]="selectedCosts.indexOf(unitCost) === -1">
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>

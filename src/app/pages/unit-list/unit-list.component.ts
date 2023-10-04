@@ -19,11 +19,9 @@ export class UnitListComponent implements OnInit {
     ) { }
   
   ngOnInit(): void {
-    console.log("units--->", this.aoeUnitsService.getAllUnits());
   }
 
   openUnitDetails(unit: Unit) {
-    console.log("unitDetails--> ,", unit);
     this.router.navigate(['unit-details/' + unit.id], { relativeTo: this.route });
   }
 
