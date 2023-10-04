@@ -23,9 +23,5 @@ export interface Unit {
 
 export type Age = "Dark" | "Feudal" | "Castle" | "Imperial";
 
-export type Cost = { Food: number; Wood: number }
-| { Gold: number; Food: number }
-| { Gold: number; Wood: number }
-| { Food: number} | { Gold: number} | { Wood: number}
-| null
+export type Cost = { Food?: number; Wood?: number, Gold?: number } | null
 

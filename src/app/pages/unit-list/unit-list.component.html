@@ -9,7 +9,7 @@
             </tr>
         </thead>
         <tbody class="unit-table__content">
-            <tr *ngFor="let unit of aoeUnits">
+            <tr *ngFor="let unit of aoeUnits" (click)="openUnitDetails(unit)">
                 <td data-label="ID">{{unit.id}}</td>
                 <td data-label="Name">{{unit.name}}</td>
                 <td data-label="Age">{{unit.age}}</td>

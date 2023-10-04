@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Cost } from 'src/app/models/units.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Cost, Unit } from 'src/app/models/units.model';
 import { AoeUnitsService } from 'src/app/services/aoe-units.service';
 
 @Component({
@@ -11,12 +12,19 @@ export class UnitListComponent implements OnInit {
 
   aoeUnits = this.aoeUnitsService.getAllUnits();
   
-  constructor(private aoeUnitsService: AoeUnitsService) {
-
-  }
+  constructor(
+    private aoeUnitsService: AoeUnitsService,
+    private router: Router,
+    private route: ActivatedRoute,
+    ) { }
   
   ngOnInit(): void {
     console.log("units--->", this.aoeUnitsService.getAllUnits());
+  }
+
+  openUnitDetails(unit: Unit) {
+    console.log("unitDetails--> ,", unit);
+    this.router.navigate(['unit-details/' + unit.id], { relativeTo: this.route });
   }
 
   parseUnitCost(cost: Cost): string {

@@ -1,0 +1,50 @@
+<div class="unit-details-container">
+    <table class="unit-details-table">
+        <tbody class="unit-details-table-body">
+            <tr>
+                <th>ID</th>
+                <td>{{ unit?.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ unit?.name }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ unit?.description }}</td>
+            </tr>
+            <tr>
+                <th>Wood Cost</th>
+                <td>{{ unit?.cost?.Wood ?? '-' }}</td>
+            </tr>
+            <tr>
+                <th>Food Cost</th>
+                <td>{{ unit?.cost?.Food ?? '-' }}</td>
+            </tr>
+            <tr>
+                <th>Gold Cost</th>
+                <td>{{ unit?.cost?.Gold ?? '-' }}</td>
+            </tr>
+            <tr>
+                <th>Build Time</th>
+                <td>{{ unit?.build_time ?? '-' }}</td>
+            </tr>
+            <tr>
+                <th>Reload Time</th>
+                <td>{{ unit?.reload_time ?? '-' }}</td>
+            </tr>
+            <tr>
+                <th>Hit Points</th>
+                <td>{{ unit?.hit_points ?? '-' }}</td>
+            </tr>
+            <tr>
+                <th>Attack</th>
+                <td>{{ unit?.attack ?? '-' }}</td>
+            </tr>
+            <tr>
+                <th>Accuracy</th>
+                <td>{{ unit?.accuracy ?? '-' }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

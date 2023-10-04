@@ -14,7 +14,10 @@ export class AoeUnitsService {
 
   getAllUnits(): Unit[] {
     this.aoeUnits = units;
-
     return this.aoeUnits;
+  }
+
+  getUnitByID(id: number): Unit | undefined {
+    return units.find(unit=> unit.id === id);
   }
 }
