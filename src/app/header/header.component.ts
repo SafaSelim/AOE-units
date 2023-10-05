@@ -19,10 +19,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private router: Router,
     private activatedRoute: ActivatedRoute,
   ) {
-    this.bornAudio.src = "../../assets/audio/aoe-born.mp3"
-    this.bornAudio.load();
-    this.hornAudio.src = "../../assets/audio/aoe-horn.mp3"
-    this.hornAudio.load();
+    this.loadAudios();
    }
 
   ngOnInit(): void {
@@ -39,14 +36,21 @@ export class HeaderComponent implements OnInit, OnDestroy {
         mergeMap((route) => route.data)
       )
       .subscribe((data) => {
-        // if(data['title'] === "Home") {
-        //   this.bornAudio.play();
-        // } else if (data['title'] === "Units") {
-        //   this.hornAudio.play();
-        // }
+        if(data['title'] === "Home") {
+          this.bornAudio.play();
+        } else if (data['title'] === "Units") {
+          this.hornAudio.play();
+        }
 
         this.pageTitle = data['title'] || 'Default Page Title';
       });
+  }
+
+  loadAudios() {
+    this.bornAudio.src = "../../assets/audio/aoe-born.mp3"
+    this.bornAudio.load();
+    this.hornAudio.src = "../../assets/audio/aoe-horn.mp3"
+    this.hornAudio.load();
   }
 
   ngOnDestroy(): void {

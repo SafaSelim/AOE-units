@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { Age } from 'src/app/models/units.model';
+import { Store } from '@ngrx/store';
+import { AgeFilter } from 'src/app/models/filters.model';
+import { unitsAgeFiltered } from 'src/app/pages/unit-list/store/units.actions';
+import { State } from 'src/app/pages/unit-list/store/units.reducer';
 
-type AgeFilter = Age | 'All';
 
 @Component({
   selector: 'app-filter-ages',
@@ -13,11 +15,13 @@ export class FilterAgesComponent {
   
   selectedAge: AgeFilter  = 'All';
 
-  constructor() { }
+  constructor(
+    private store: Store<{units:State}>
+  ) { }
 
   filterByAge(unitAge: AgeFilter) {
     this.selectedAge = unitAge;
-    //TODO create a service to filter units by age
+    this.store.dispatch(unitsAgeFiltered({selectedAgeFilter: unitAge}))
   }
   
 }

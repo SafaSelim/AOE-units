@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { Cost } from 'src/app/models/units.model';
+import { CostFilter } from 'src/app/models/filters.model';
 
-type CostFilter = 'food'| 'wood'| 'gold';
 
 @Component({
   selector: 'app-filter-costs',
@@ -9,7 +8,7 @@ type CostFilter = 'food'| 'wood'| 'gold';
   styleUrls: ['./filter-costs.component.scss']
 })
 export class FilterCostsComponent {
-  unitCosts: CostFilter[] = ['food', 'wood', 'gold'];
+  unitCosts: CostFilter[] = ['Food', 'Wood', 'Gold'];
   selectedCosts: CostFilter[] = [];
 
   constructor() {}
