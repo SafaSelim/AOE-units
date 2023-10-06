@@ -6,16 +6,8 @@ import { units } from './aoe-units.mock';
   providedIn: 'root'
 })
 export class AoeUnitsService {
-
-  aoeUnits: Unit[] | undefined;
   
-
   constructor() { }
-
-  getAllUnits(): Unit[] {
-    this.aoeUnits = units;
-    return this.aoeUnits;
-  }
 
   getUnitByID(id: number): Unit | undefined {
     return units.find(unit=> unit.id === id);

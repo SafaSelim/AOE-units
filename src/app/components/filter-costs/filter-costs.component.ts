@@ -29,11 +29,9 @@ export class FilterCostsComponent {
 
     updatedFilters[cost] = { ...updatedFilters[cost], selected: !updatedFilters[cost].selected };
 
-    this.selectedCostFilters =  { ...updatedFilters};
+    this.selectedCostFilters = { ...updatedFilters};
 
-    if(this.selectedCostFilters[cost].selected === false) {
-      this.filterUnits();
-    }
+    this.filterUnits();
   }
 
   onRangeChange(event: any, costType: CostFilterOptions) {

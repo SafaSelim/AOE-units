@@ -17,20 +17,13 @@ export class FilterAgesComponent {
 
   wololoAudio = new Audio();
 
-  loadAudios() {
-    this.wololoAudio.src = "../../../assets/audio/wololo.mp3"
-    this.wololoAudio.load();
-  }
 
   constructor(
     private store: Store<{units:State}>
-  ) {
-    this.loadAudios();
-   }
+  ) { }
 
   filterByAge(unitAge: AgeFilter) {
     this.selectedAge = unitAge;
-    this.wololoAudio.play();
     this.store.dispatch(unitsAgeFiltered({selectedAgeFilter: unitAge}))
   }
   
