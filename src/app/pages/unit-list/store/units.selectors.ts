@@ -23,40 +23,32 @@ export const selectFilteredUnits = createSelector(
 
     let filteredUnits = state.allUnits;
 
+    // Filter Ages
     if (selectedAgeFilter !== 'All') {
       filteredUnits = filteredUnits.filter((unit) => unit.age === selectedAgeFilter);
     }
 
-    const costFilterConditions: any = [];
-
-    Object.entries(selectedCostsFilters).forEach(([key, value]) => {
+   // Filter Costs
+    Object.entries(selectedCostsFilters).forEach(([key, filter]) => {
       const costType: CostFilterOptions = key as CostFilterOptions;
-
-      if (value.selected && value.value > 0) {
-        costFilterConditions.push((unit: Unit) => {
-          if (unit.cost) {
-            switch (costType) {
-              case 'Wood':
-                return unit.cost.Wood ? unit.cost.Wood <= value.value : false;
-              case 'Food':
-                return unit.cost.Food ? unit.cost.Food <= value.value : false;
-              case 'Gold':
-                return unit.cost.Gold ? unit.cost.Gold <= value.value : false;
-              default:
-                return false;
-            }
-          } else {
-            return false;
-          }
-        });
-      }
+        if(filter.selected) {
+            filteredUnits = filteredUnits.filter((unit: Unit) => {
+                if(unit.cost) {
+                    if(costType === 'Wood') {
+                            return unit.cost.Wood ? unit.cost.Wood <= filter.value : false;
+                        } else if(costType === 'Food') {
+                            return unit.cost.Food ? unit.cost.Food <= filter.value : false;
+                        } else if(costType === 'Gold') {
+                            return unit.cost.Gold ? unit.cost.Gold <= filter.value : false;
+                        } else {
+                            return false;
+                        }
+                } else {
+                    return false;
+                }
+            })
+        }
     });
-
-    if (costFilterConditions.length > 0) {
-      filteredUnits = filteredUnits.filter((unit) =>
-        costFilterConditions.some((condition: any) => condition(unit))
-      );
-    }
 
     return filteredUnits;
   }

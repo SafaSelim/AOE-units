@@ -21,9 +21,6 @@ export class UnitListComponent implements OnInit {
     ) { }
   
   ngOnInit(): void {
-    // this.aoeUnits$.subscribe((data: State)=> {
-    //   this.aoeUnits = data.units;
-    // });
     this.store.select(selectFilteredUnits).subscribe((units) => {
       this.aoeUnits = units;
     });

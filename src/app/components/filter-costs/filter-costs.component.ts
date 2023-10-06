@@ -17,42 +17,36 @@ export class FilterCostsComponent {
     Food: { selected: false, value: 0 },
     Wood: { selected: false, value: 0 },
     Gold: { selected: false, value: 0 }
-  }
+  };
+
 
   constructor(
     private store: Store<{units:State}>
   ) {}
 
   toggleFilters(cost: CostFilterOptions) {
-    console.log('this.selected-->',this.selectedCostFilters);
     const updatedFilters = { ...this.selectedCostFilters };
-    updatedFilters[cost].selected = !updatedFilters[cost].selected;
-    console.log('this.selected-->',this.selectedCostFilters);
+
+    updatedFilters[cost] = { ...updatedFilters[cost], selected: !updatedFilters[cost].selected };
+
+    this.selectedCostFilters =  { ...updatedFilters};
+
     if(this.selectedCostFilters[cost].selected === false) {
-      this.filterUnits(cost, -1);
+      this.filterUnits();
     }
   }
 
   onRangeChange(event: any, costType: CostFilterOptions) {
-    console.log("event-->",event)
-    console.log('value-->', event.target.value, costType)
-    //TODO create a service to filter the units according to the selected range of the cost
+    const updatedFilters = { ...this.selectedCostFilters };
 
-    this.filterUnits(costType, Number.parseInt(event.target.value));
+    updatedFilters[costType] = { ...updatedFilters[costType], value: Number.parseInt(event.target.value)};
+
+    this.selectedCostFilters =  { ...updatedFilters};
+    this.filterUnits();
   }
 
-  filterUnits(costType: CostFilterOptions, value: number) {
-    let updatedFilters: SelectedCostFilters = {
-      Food: { selected: false, value: 0 },
-      Wood: { selected: false, value: 0 },
-      Gold: { selected: false, value: 0 }
-    };
-
-    updatedFilters[costType].value = value;
-    updatedFilters[costType].selected = this.selectedCostFilters[costType].selected;
-    console.log('this.selected value changed-->', updatedFilters);
-    console.log("selectedCostFilters",this.selectedCostFilters, updatedFilters)
-    this.store.dispatch(unitsCostsFiltered({ selectedCostsFilters: updatedFilters }));
+  filterUnits() {
+    this.store.dispatch(unitsCostsFiltered({ selectedCostsFilters: this.selectedCostFilters }));
   }
 
 }
