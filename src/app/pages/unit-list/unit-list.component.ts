@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
 
 import { Cost, Unit } from 'src/app/models/units.model';
-import { AoeUnitsService } from 'src/app/services/aoe-units.service';
 import { State } from './store/units.reducer';
+import { selectFilteredUnits } from './store/units.selectors';
 
 @Component({
   selector: 'app-unit-list',
@@ -14,19 +13,19 @@ import { State } from './store/units.reducer';
 })
 export class UnitListComponent implements OnInit {
   aoeUnits: Unit[] = [];
-  aoeUnits$: Observable<State>;
   
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private store: Store<{units: State}>,
-    ) {
-      this.aoeUnits$ = this.store.select('units');
-     }
+    ) { }
   
   ngOnInit(): void {
-    this.aoeUnits$.subscribe((data: State)=> {
-      this.aoeUnits = data.units;
+    // this.aoeUnits$.subscribe((data: State)=> {
+    //   this.aoeUnits = data.units;
+    // });
+    this.store.select(selectFilteredUnits).subscribe((units) => {
+      this.aoeUnits = units;
     });
   }
 
